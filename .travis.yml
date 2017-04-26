@@ -2,6 +2,6 @@ language: ruby
 rvm:
  - 2.2.2
 before_script:
-  - "psql -c "CREATE USER maestro WITH PASSWORD 'maestro';" -U postgres"
-  - "psql -c 'create database maestroDB;' -U postgres"
-  - "rake db:migrate"
+ - "psql -c "CREATE USER maestro WITH PASSWORD 'maestro';" -U postgres"
+ - "psql -c 'create database maestroDB;' -U postgres"
+ - "rake db:migrate"
