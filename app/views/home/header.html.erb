@@ -1,0 +1,61 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+	<div class="navbar-header">
+
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+
+		</button>
+
+		<a class="navbar-brand">Idea Tracker</a>
+
+	</div>
+
+	<ul class="nav navbar-top-links navbar-right">
+
+		<li>
+		<%= link_to '/logout', :id => "button_logout" do %>
+		<i class="fa fa-sign-out fa-fw"></i> Logout
+		<% end %>
+		</li>
+		
+	</ul>
+
+
+	<div class="navbar-default sidebar" role="navigation">
+		<div class="sidebar-nav navbar-collapse">
+			<ul class="nav" id="side-menu">
+				
+				<li>
+					
+					<!-- <a href=""><i class="fa fa-dashboard fa-fw"></i> Dashboard</a> -->
+
+					<a class="button" id="button_dashboard" href="/idea/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+
+				</li>
+
+
+				<li>
+
+					<a class="button" id="button_cadastrar_ideia" href="/idea/cadastro"><i class="fa fa-lightbulb-o fa-fw"></i>Cadastrar Ideia</a>
+
+				</li>
+
+                        <!--
+                        <li>
+                            <a href="/home/inicio2"><i class="fa fa-table fa-fw"></i> Tables</a>
+                        </li>
+                        <li>
+                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                        </li>
+                    -->
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
