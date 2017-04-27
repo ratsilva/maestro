@@ -6,7 +6,7 @@
 
 [![Build Status](https://travis-ci.org/ratsilva/maestro.svg?branch=master)](https://travis-ci.org/ratsilva/maestro)
 
-##Integrantes do Projeto
+## Integrantes do Projeto
 
 Alex Gwo Jen Lan (8921311)
 
@@ -18,7 +18,7 @@ Pedro Henrique Farias Cassiano (8921537)
 
 Ricardo Augusto Toledo da Silva (8921930)
 
-##Descrição
+## Descrição
 
 O dia a dia de uma empresa desenvolvedora de soluções WEB não é nada fácil. Muitos clientes, projetos, funcionários, burocracia e como consequência disso, temos uma desorganização generalizada que afeta o bom andamento dos projetos e o relacionamento com os clientes.
 
@@ -32,7 +32,7 @@ O sistema também fornece acesso aos clientes de cada projeto, para que eles pos
 
 O Maestro é uma plataforma integradora entre clientes e fornecedores de soluções WEB, para os projetos sejam executados com qualidade e oganização.
 
-##Links
+## Links
 
 O projeto está hospedado no Heroku no seguinte endereço:
 https://maestro-project.herokuapp.com
