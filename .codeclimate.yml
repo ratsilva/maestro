@@ -1,4 +1,9 @@
-## other configuration excluded from example...
+---
+engines:
+  csslint:
+    enabled: true
+  eslint:
+    enabled: true
 exclude_paths:
-- "app/assets/javascripts/**.js"
-- "app/assets/stylesheets/**.js"
+  - "**.css"
+  - "**.js"
