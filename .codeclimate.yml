@@ -4,6 +4,9 @@ engines:
     enabled: true
   eslint:
     enabled: true
+ratings:
+  paths:
+    - "**.rb"
 exclude_paths:
   - "**.css"
   - "**.js"

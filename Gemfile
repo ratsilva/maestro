@@ -55,6 +55,8 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'database_cleaner'
+  gem "simplecov"
+  gem "codeclimate-test-reporter", "~> 1.0.0"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
