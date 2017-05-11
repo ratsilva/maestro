@@ -36,3 +36,10 @@ O Maestro é uma plataforma integradora entre clientes e fornecedores de soluç�
 
 O projeto está hospedado no Heroku no seguinte endereço:
 https://maestro-project.herokuapp.com
+
+## Instalação
+
+* clone o repositorio:
+	* `git clone https://github.com/ratsilva/maestro.git`
+* rode as migrações:
+	* `rake db:migrate`
