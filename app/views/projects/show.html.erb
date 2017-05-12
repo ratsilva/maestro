@@ -1,0 +1,18 @@
+<h1><%= @project.name %></h1>
+<dl>
+  <dt>Data de início:</dt>
+  <dd><%= @project.date_begin %></dd>
+
+  <dt>Data fim:</dt>
+  <dd><%= @project.date_end %></dd>
+
+  <dt>Custo:</dt>
+  <dd><%= @project.cost %></dd>
+
+  <dt>Descrição:</dt>
+  <dd><%= @project.description %></dd>
+
+</dl>
+
+<%= link_to "Voltar", :projects  %>
+<%= link_to "Editar", edit_project_path %>
