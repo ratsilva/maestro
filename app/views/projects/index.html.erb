@@ -1,0 +1,19 @@
+<h1>Projetos</h1>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <tr>
+      <th>Nome</th>
+      <th>Data início</th>
+      <th>Data fim</th>
+      <th>Ações</th>
+    </tr>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.date_begin %></td>
+        <td><%= project.date_end %></td>
+        <td><%= link_to "Ver", project %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
