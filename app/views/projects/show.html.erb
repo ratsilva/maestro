@@ -1,18 +1,27 @@
-<h1><%= @project.name %></h1>
-<dl>
-  <dt>Data de início:</dt>
-  <dd><%= @project.date_begin %></dd>
+<section class="content-header">
+  <h1><%= @project.name %></h1>
+  <ol class="breadcrumb">
+	  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+	  <li><%= link_to '<i class="fa fa-briefcase"></i>Projetos'.html_safe, projects_path%></li>
+		<li class="active"><%= @project.name %></li>
+	</ol>
+</section>
+<section class="content">
+  <dl>
+    <dt>Data de início:</dt>
+    <dd><%= @project.date_begin %></dd>
 
-  <dt>Data fim:</dt>
-  <dd><%= @project.date_end %></dd>
+    <dt>Data fim:</dt>
+    <dd><%= @project.date_end %></dd>
 
-  <dt>Custo:</dt>
-  <dd><%= @project.cost %></dd>
+    <dt>Custo:</dt>
+    <dd><%= @project.cost %></dd>
 
-  <dt>Descrição:</dt>
-  <dd><%= @project.description %></dd>
+    <dt>Descrição:</dt>
+    <dd><%= @project.description %></dd>
 
-</dl>
+  </dl>
 
-<%= link_to "Voltar", :projects  %>
-<%= link_to "Editar", edit_project_path %>
+  <%= link_to "Voltar", :projects  %>
+  <%= link_to "Editar", edit_project_path %>
+</section>

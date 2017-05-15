@@ -2,7 +2,10 @@
 <html>
   <head>
     <title>Maestro</title>
-    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!--
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -36,16 +39,26 @@
 
   </head>
 
-  <body>
-    <%= yield %>
-
-	<script>
-	  $.widget.bridge('uibutton', $.ui.button);
-	</script>
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+      <%= render partial: 'home/topnavigation' %>
+	    <%= render partial: 'home/menunavigation' %>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <%= yield %>
+      </div>
+      <!-- /.content-wrapper -->
+      <%= render partial: 'home/footer' %>
+      <%= render partial: 'home/controlsidebar' %>
+    </div>
+    <!-- ./wrapper -->
+		<script>
+			$.widget.bridge('uibutton', $.ui.button);
+		</script>
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     
     <%= javascript_include_tag "jquery-2.2.3.min.js" %>
     <%= javascript_include_tag "bootstrap.min.js" %>

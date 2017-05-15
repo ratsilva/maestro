@@ -1,5 +1,11 @@
-<div class="page-header">
+<section class="content-header">
   <h1>Novo Projeto</h1>
-</div>
-
-<%= render 'form' %>
+  <ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li><%= link_to '<i class="fa fa-briefcase"></i>Projetos'.html_safe, projects_path%></li>
+		<li class="active">Novo Projeto</li>
+	</ol>
+</section>
+<section class="content">
+	<%= render 'form' %>
+</section>

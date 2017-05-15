@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :project do
     name "Maestro"
-    description "Alguma descrição"
+    description "Gerenciador de projetos"
+    cost 50.0
   end
 end
