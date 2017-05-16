@@ -5,31 +5,31 @@ class ClientsController < ApplicationController
   end
   
   def show
-    @clients = Client.find(params[:id])
+    @client = Client.find(params[:id])
   end
   
   def new
-    @clients = Client.new
+    @client = Client.new
   end
   
   def edit
-    @clients = Client.find(params[:id])
+    @client = Client.find(params[:id])
   end
   
   def create
-    @clients = Client.new(client_params)
-    @clients.save
-    redirect_to @clients
+    @client = Client.new(client_params)
+    @client.save
+    redirect_to @client
   end
   
   def update
-    @clients = Client.find(params[:id])
-    @clients.update(client_params)
-    redirect_to @clients
+    @client = Client.find(params[:id])
+    @client.update(client_params)
+    redirect_to @client
   end
   
   def destroy
-    @clients.destroy
+    @client.destroy
     redirect_to clients_path
   end
   
@@ -37,7 +37,7 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:company_name, :contact_name, :zip_code, :adress, 
       	:number, :district, :complement, :city, :state, :country, :phone_number, :cell_phone, 
-      	:email, :cpf, :cnpj, :is_pf, :is_pj)
+      	:email, :cpf, :cnpj, :is_pf, :is_pj, :status)
     end
 
 end
