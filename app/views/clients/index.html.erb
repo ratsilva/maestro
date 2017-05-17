@@ -1,3 +1,13 @@
+<section class="content-header">
+  <h1>
+    Lista de Clientes
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> DashBoard</a></li>
+    <li class="active">Clientes</li>
+  </ol>
+</section>
+
 <section class="content">
   <div class="row">
     <div class="col-md-12">
@@ -43,7 +53,7 @@
           <table class="table">
 
             <tr>
-              <th>Editar</th>
+              <th>Abrir</th>
               <th>ID</th>
               <th>Nome da Empresa</th>
               <th>Telefone</th>
@@ -54,7 +64,7 @@
             <% @clients.each do |client| %>
             <tr>
 
-              <td><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, client%></td>
+              <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, client%></td>
               <td><%= client.id %></td>
               <td><%= client.company_name %></td>
               <td><%= client.phone_number %></td>
@@ -80,6 +90,5 @@
       </div>
     </div>
   </div>
-
 
 </section>

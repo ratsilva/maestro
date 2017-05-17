@@ -1,18 +1,73 @@
-<h1><%= @client.company_name %></h1>
-<dl>
-  <dt>Nome da empresa:</dt>
-  <dd><%= @client.company_name %></dd>
+<section class="content-header">
+	<h1>
+		Visualizar Cliente
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="/"><i class="fa fa-dashboard"></i> DashBoard</a></li>
+		<li class="active">Clientes</li>
+	</ol>
+</section>
 
-  <dt>Nome do contato:</dt>
-  <dd><%= @client.contact_name %></dd>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
 
-  <dt>Telefone:</dt>
-  <dd><%= @client.phone_number %></dd>
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-globe"></i>  <%= @client.company_name %>
+            <small class="pull-right">Data Cadastro: <%= @client.created_at.to_s(:long) %></small>
+          </h2>
+        </div>
 
-  <dt>Email:</dt>
-  <dd><%= @client.email %></dd>
 
-</dl>
 
-<%= link_to "Voltar", :clients  %>
-<%= link_to "Editar", edit_client_path %>
+        <div class="box-body">
+
+          <div class="row invoice-info">
+            <div class="col-sm-6 invoice-col">
+              <address>
+                <strong>Dados do Cliente</strong><br>
+                Nome do Contato: <%= @client.contact_name %><br>
+                CEP: <%= @client.zip_code %><br>
+                Endereço: <%= @client.adress %>, <%= @client.number %> - <%= @client.district %><br>
+                Complemento: <%= @client.complement %><br>
+                <%= @client.city %> - <%= @client.state %> - <%= @client.country %>
+              </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6 invoice-col">
+              <address>
+                <strong>Dados de Contato</strong><br>
+                Telefone: <%= @client.phone_number %><br>
+                Celular: <%= @client.cell_phone %><br>
+                Email: <%= @client.email %><br>
+                Status: 
+                <% if @client.status == "Ativo" %>
+                <span class="label label-success">Ativo</span>
+                <% else %>
+                <span class="label label-danger">Inativo</span>
+                <% end %>
+              </address>
+            </div>
+          </div>
+
+
+          <div class="row no-print">
+            <div class="col-xs-12">
+              <%= link_to '<i class="fa fa-arrow-left"> Voltar</i>'.html_safe, :clients, :class => 'btn btn-success' %>
+
+              <%= link_to '<i class="fa fa-pencil"> Editar</i>'.html_safe, edit_client_path, :class => 'btn btn-primary pull-right' %>
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</section>
