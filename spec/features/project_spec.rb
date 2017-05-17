@@ -10,6 +10,9 @@ RSpec.describe "Projeto", type: :feature do
   end
   
   context "na pagina de projetos" do
+    before :each do
+      @client = create(:client)
+    end
     it "cria um novo projeto" do
       visit projects_path
       click_link('Novo Projeto')
@@ -34,14 +37,18 @@ RSpec.describe "Projeto", type: :feature do
       
     end
     it "mostra dados de um projeto" do
-      project = create(:project)
+      project = build(:project)
+      project.client = @client
+      project.save
       visit projects_path
       click_link('Ver')
       expect(current_path).to eq(project_path(project))
     end
     
     it "edita um projeto" do
-      project = create(:project)
+      project = build(:project)
+      project.client = @client
+      project.save
       visit project_path(project)
       click_link('Editar')
       expect(current_path).to eq(edit_project_path(project))

@@ -1,4 +1,5 @@
 <!-- Project form -->
+<div class="box-body">
 <%= form_for(@project, html: { class: "form-horizontal", role: "form" }) do |f| %>
   <% if @project.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
@@ -10,6 +11,12 @@
         <li><%= msg %></li>
       <% end %>
       </ul>
+    </div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <i class="icon fa fa-ban"></i> <%= flash[:alert] %>
     </div>
   <% end %>
 
@@ -32,6 +39,12 @@
     </div>
   </div>
   <div class="form-group">
+    <%= f.label "Cliente", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.collection_select :client_id, @clients, :id, :company_name %>
+    </div>
+  </div>
+  <div class="form-group">
     <%= f.label "Custo", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :cost, class: "form-control" %>
@@ -49,3 +62,4 @@
     </div>
   </div>
 <% end %>
+</div>

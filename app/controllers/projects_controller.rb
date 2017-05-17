@@ -9,16 +9,26 @@ class ProjectsController < ApplicationController
   
   def new
     @project = Project.new
+    @clients = Client.all
   end
   
   def edit
     @project = Project.find(params[:id])
+    @clients = Client.all
   end
   
   def create
     @project = Project.new(project_params)
-    @project.save
-    redirect_to @project
+    if @project.save
+      redirect_to @project
+    else
+      if @project.errors.any?
+        @project.errors.each do |field, msg|
+          flash[:alert] = msg
+        end
+      end
+      redirect_to new_project_path
+    end
   end
   
   def update
@@ -28,12 +38,13 @@ class ProjectsController < ApplicationController
   end
   
   def destroy
+    @project = Project.find(params[:id])
     @project.destroy
     redirect_to projects_path
   end
   
   private
     def project_params
-      params.require(:project).permit(:name, :date_begin, :date_end, :cost, :description)
+      params.require(:project).permit(:name, :date_begin, :date_end, :cost, :description, :client_id)
     end
 end
