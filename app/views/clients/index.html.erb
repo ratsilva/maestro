@@ -1,0 +1,94 @@
+<section class="content-header">
+  <h1>
+    Lista de Clientes
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> DashBoard</a></li>
+    <li class="active">Clientes</li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+
+        <div class="box-header">
+          <h3 class="box-title">Clientes</h3>
+        </div>
+
+
+        <div class="box-body">
+
+          <div class="col-md-3">
+            <td>
+              <a class="btn btn-block btn-info" href="/clients/new">Cadastrar Cliente</a>
+            </td>
+          </div>
+
+          <div class="box-tools pull-right">
+            <div class="input-group input-group-sm">
+
+              <%= form_tag :clients, :class => "input-group custom-search-form", :method => 'get' do %>
+
+              <%= text_field_tag :search, params[:search], :name => "table_search", :class => "form-control pull-right", :placeholder => "Pesquisar" %>
+
+              <div class="input-group-btn">
+                <%= button_tag type: 'submit',  class: "btn btn-default" do %>
+                <i class="fa fa-search"></i>
+                <% end %>
+              </div>
+
+
+
+              <% end %>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="box-body table-responsive">
+
+          <table class="table">
+
+            <tr>
+              <th>Abrir</th>
+              <th>ID</th>
+              <th>Nome da Empresa</th>
+              <th>Telefone</th>
+              <th>Status</th>
+              <th>Email</th>
+            </tr>
+
+            <% @clients.each do |client| %>
+            <tr>
+
+              <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, client%></td>
+              <td><%= client.id %></td>
+              <td><%= client.company_name %></td>
+              <td><%= client.phone_number %></td>
+              
+              <td>
+
+                <% if client.status == "Ativo" %>
+                <span class="label label-success">Ativo</span>
+                <% else %>
+                <span class="label label-danger">Inativo</span>
+                <% end %>
+
+              </td>
+
+              <td><%= client.email %></td>
+            </tr>
+            <% end %>
+
+          </table>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</section>
