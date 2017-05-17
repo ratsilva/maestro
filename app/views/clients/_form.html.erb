@@ -7,6 +7,8 @@
           <h3 class="box-title">Novo Cliente</h3>
         </div>
 
+          
+
             <%= form_for(@client, html: { class: "box-body", role: "form" }) do |f| %>
             <% if @client.errors.any? %>
             <div class="alert alert-danger alert-dismissable" role="alert">
@@ -21,11 +23,20 @@
             </div>
             <% end %>
 
+            <% if flash[:alert] %>
+              <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="icon fa fa-ban"></i> <%= flash[:alert] %>
+                  
+                </div>
+          <% end %>
+
             <!-- Nome da Empresa -->
             <div class="col-md-6">
               <div class="form-group">
                 
-                <%= f.label "Nome da Empresa"%>
+                <%= f.label "Nome da Empresa *" %>
+                
                 <%= f.text_field :company_name, class: "form-control", id: "txt_nome_empresa", placeholder: "Digite o Nome da Empresa" %>
 
               </div>
@@ -37,7 +48,8 @@
             <div class="col-md-6">
               <div class="form-group">
                 
-                <%= f.label "Nome do Contato"%>
+                <%= f.label "Nome do Contato *"%>
+                
                 <%= f.text_field :contact_name, class: "form-control", id: "txt_nome_contato", placeholder: "Digite o Nome do Contato" %>
 
               </div>
@@ -49,7 +61,8 @@
             <div class="col-md-4">
               <div class="form-group">
                 
-                <%= f.label "CEP"%>
+                <%= f.label "CEP *"%>
+                
                 <%= f.text_field :zip_code, class: "form-control", id: "txt_cep", placeholder: "Digite o CEP" %>
 
               </div>
@@ -61,7 +74,8 @@
             <div class="col-md-8">
               <div class="form-group">
                 
-                <%= f.label "Logradouro"%>
+                <%= f.label "Logradouro *"%>
+                
                 <%= f.text_field :adress, class: "form-control", id: "txt_endereco", placeholder: "Digite o Logradouro" %>
 
               </div>
@@ -73,7 +87,8 @@
             <div class="col-md-2">
               <div class="form-group">
                 
-                <%= f.label "Número"%>
+                <%= f.label "Número *"%>
+                
                 <%= f.text_field :number, class: "form-control", id: "txt_numero", placeholder: "Digite o Número" %>
 
               </div>
@@ -97,7 +112,8 @@
             <div class="col-md-5">
               <div class="form-group">
                 
-                <%= f.label "Bairro"%>
+                <%= f.label "Bairro *"%>
+                
                 <%= f.text_field :district, class: "form-control", id: "txt_bairro", placeholder: "Digite o Bairro" %>
 
               </div>
@@ -109,7 +125,8 @@
             <div class="col-md-4">
               <div class="form-group">
                 
-                <%= f.label "Cidade"%>
+                <%= f.label "Cidade *"%>
+                
                 <%= f.text_field :city, class: "form-control", id: "txt_cidade", placeholder: "Digite o Cidade" %>
 
               </div>
@@ -121,7 +138,8 @@
             <div class="col-md-4">
               <div class="form-group">
                 
-                <%= f.label "Estado"%>
+                <%= f.label "Estado *"%>
+                
                 <%= f.text_field :state, class: "form-control", id: "txt_estado", placeholder: "Digite o Estado" %>
 
               </div>
@@ -133,7 +151,8 @@
             <div class="col-md-4">
               <div class="form-group">
                 
-                <%= f.label "País"%>
+                <%= f.label "País *"%>
+                
                 <%= f.text_field :country, class: "form-control", id: "txt_pais", placeholder: "Digite o País" %>
 
               </div>
@@ -145,7 +164,8 @@
             <div class="col-md-6">
               <div class="form-group">
                 
-                <%= f.label "Telefone"%>
+                <%= f.label "Telefone *"%>
+                
                 <%= f.text_field :phone_number, class: "form-control", id: "txt_telefone", placeholder: "Digite o Telefone" %>
 
               </div>
@@ -169,7 +189,8 @@
             <div class="col-md-6">
               <div class="form-group">
                 
-                <%= f.label "Email"%>
+                <%= f.label "Email *"%>
+                
                 <%= f.text_field :email, class: "form-control", id: "txt_email", placeholder: "Digite o Email" %>
 
               </div>
@@ -181,7 +202,8 @@
             <div class="col-md-6">
               <div class="form-group">
                 
-                <%= f.label "Situação"%>
+                <%= f.label "Situação *"%>
+
                 <%= f.select(:status, ['Ativo', 'Inativo'], {}, { :class => 'form-control' }) %>
 
 
@@ -195,7 +217,11 @@
                   <%= f.submit class: "btn btn-primary" %>
               </div>
 
-
+              <div class="form-group has-error">
+                <label class="control-label" for="inputError">
+                  * Campos Obrigatórios
+                </label>
+              </div>
             <% end %>
       </div>
     </div>

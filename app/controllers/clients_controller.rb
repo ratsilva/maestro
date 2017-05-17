@@ -18,8 +18,16 @@ class ClientsController < ApplicationController
   
   def create
     @client = Client.new(client_params)
-    @client.save
-    redirect_to @client
+    if @client.save
+      redirect_to @client
+    else
+      if @client.errors.any?
+        @client.errors.each do |field, msg|
+          flash[:alert] = msg
+        end
+      end
+      redirect_to "/clients/new"
+    end
   end
   
   def update
@@ -29,6 +37,7 @@ class ClientsController < ApplicationController
   end
   
   def destroy
+    @client = Client.find(params[:id])
     @client.destroy
     redirect_to clients_path
   end
