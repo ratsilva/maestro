@@ -1,0 +1,78 @@
+<section class="content-header">
+  <h1>
+    Lista de Funcionários
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> DashBoard</a></li>
+    <li class="active">Funcionários</li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+
+        <div class="box-header">
+          <h3 class="box-title">Funcionários</h3>
+        </div>
+
+
+        <div class="box-body">
+
+          <div class="col-md-3">
+            <td>
+              <a class="btn btn-block btn-info" href="/employees/new">Cadastrar Funcionário</a>
+            </td>
+          </div>
+
+          <div class="box-tools pull-right">
+            <div class="input-group input-group-sm">
+              <%= form_tag :employees, :class => "input-group custom-search-form", :method => 'get' do %>
+              <%= text_field_tag :search, params[:search], :class => "form-control", :placeholder => "Digite aqui" %>
+
+              <span class="input-group-btn">
+                <%= submit_tag "Pesquisar", :class => "btn btn-default fa fa-search"%>
+              </span>
+              
+              <% end %>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="box-body table-responsive">
+
+          <table class="table">
+
+            <tr>
+              <th>Abrir</th>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Telefone</th>
+              <th>Cargo</th>
+              <th>Email</th>
+            </tr>
+
+            <% @employees.each do |employee| %>
+            <tr>
+
+              <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, employee %></td>
+              <td><%= employee.id %></td>
+              <td><%= employee.name %></td>
+              <td><%= employee.telefone %></td>
+              <td><%= employee.cargo %></td>
+              <td><%= employee.email %></td>
+            </tr>
+            <% end %>
+
+          </table>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</section>
