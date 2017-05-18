@@ -1,0 +1,68 @@
+<section class="content-header">
+	<h1>
+		Visualizar Base de Conhecimento
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="/"><i class="fa fa-dashboard"></i> DashBoard</a></li>
+		<li class="active">Configurações</li>
+    <li class="active">Base de Conhecimento</li>
+	</ol>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-globe"></i>  <%= @knowledge.name %>
+            <small class="pull-right">Data Cadastro: <%= @knowledge.created_at.to_s(:long) %></small>
+          </h2>
+        </div>
+
+
+
+        <div class="box-body">
+
+          <div class="row invoice-info">
+            <div class="col-sm-6 invoice-col">
+              <address>
+                <strong>Dados do Conhecimento</strong><br>
+                Nome: <%= @knowledge.name %><br>
+                Tipo: <%= @knowledge.group %>
+              </address>
+            </div>
+          </div>
+
+
+          <div class="row no-print">
+            <div class="col-xs-12">
+
+              <%= link_to '<i class="fa fa-arrow-left"> Voltar</i>'.html_safe, :knowledges, :class => 'btn btn-success' %>
+
+              <%= link_to '<i class="fa fa-pencil"> Editar</i>'.html_safe, edit_knowledge_path, :class => 'btn btn-primary pull-right' %>
+
+<br>
+<br>
+              <%= form_tag @knowledge, :method => 'delete' do %>
+
+                <%= button_tag class: "btn btn-primary pull-right" do %>
+                <i class="fa fa-times"> Excluir</i>
+                <% end %>
+
+              <% end %>
+
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</section>
