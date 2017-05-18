@@ -4,7 +4,7 @@ class Knowledge < ApplicationRecord
 	
 	def self.search(search)
 		if search
-			where(["UPPER(name) LIKE UPPER(?) OR UPPER(group) LIKE UPPER(?)","%#{search}%", "%#{search}%"])
+			where(["UPPER(name) LIKE UPPER(?)","%#{search}%"])
 		else
 			all
 		end

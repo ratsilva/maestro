@@ -28,23 +28,17 @@
 
           <div class="box-tools pull-right">
             <div class="input-group input-group-sm">
-
               <%= form_tag :clients, :class => "input-group custom-search-form", :method => 'get' do %>
+              <%= text_field_tag :search, params[:search], :class => "form-control", :placeholder => "Digite aqui" %>
 
-              <%= text_field_tag :search, params[:search], :name => "table_search", :class => "form-control pull-right", :placeholder => "Pesquisar" %>
-
-              <div class="input-group-btn">
-                <%= button_tag  class: "btn btn-default" do %>
-                <i class="fa fa-search"></i>
-                <% end %>
-              </div>
-
-
-
+              <span class="input-group-btn">
+                <%= submit_tag "Pesquisar", :class => "btn btn-default fa fa-search"%>
+              </span>
+              
               <% end %>
-
             </div>
           </div>
+
 
         </div>
 

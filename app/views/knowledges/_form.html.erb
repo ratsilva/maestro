@@ -37,7 +37,7 @@
                 
                 <%= f.label "Nome do Conhecimento *" %>
                 
-                <%= f.text_field :name, class: "form-control", id: "txt_nome_conhecimento", placeholder: "Digite o Nome do Conhecimento" %>
+                <%= f.text_field :name, class: "form-control", id: "txt_nome_conhecimento", placeholder: "" %>
 
               </div>
             </div>
@@ -50,7 +50,8 @@
                 
                 <%= f.label "Tipo *"%>
                 
-                <%= f.text_field :group, class: "form-control", id: "txt_tipo", placeholder: "Digite o Tipo" %>
+                <%= f.select(:group, ['Linguagem', 'Banco de Dados', 'Metodologia de Desenvolvimento', 'Paradigma de Programação', 'Framework', 'IDE', 'Editor de Imagem', 'Editor de Texto'], {}, { :class => 'form-control' }) %>
+
 
               </div>
             </div>
