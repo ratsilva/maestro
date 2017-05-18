@@ -1,0 +1,142 @@
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+
+        <div class="box-header">
+          <h3 class="box-title">Novo Funcionário</h3>
+        </div>
+
+
+
+        <%= form_for(@employee, html: { class: "box-body", role: "form" }) do |f| %>
+        <% if @employee.errors.any? %>
+        <div class="alert alert-danger alert-dismissable" role="alert">
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h4>
+
+          <ul>
+            <% @employee.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+
+        <% if flash[:alert] %>
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <i class="icon fa fa-ban"></i> <%= flash[:alert] %>
+
+        </div>
+        <% end %>
+
+        <!-- Nome -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Nome *" %>
+
+            <%= f.text_field :name, class: "form-control", id: "txt_employee_nome", placeholder: "" %>
+
+          </div>
+        </div>
+        <!-- Nome -->
+
+
+        <!-- Email -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Email *"%>
+
+            <%= f.text_field :email, class: "form-control", id: "txt_employee_email", placeholder: "" %>
+
+          </div>
+        </div>
+        <!-- Email -->
+
+
+        <!-- Telefone -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Telefone *"%>
+
+            <%= f.text_field :telefone, class: "form-control", id: "txt_employee_telefone", placeholder: "" %>
+
+          </div>
+        </div>
+        <!-- Telefone -->
+
+
+        <!-- Celular -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Celular"%>
+
+            <%= f.text_field :celular, class: "form-control", id: "txt_employee_celular", placeholder: "" %>
+
+          </div>
+        </div>
+        <!-- Celular -->
+
+
+        <!-- Cargo -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Cargo *"%>
+
+            <%= f.text_field :cargo, class: "form-control", id: "txt_employee_cargo", placeholder: "" %>
+
+          </div>
+        </div>
+        <!-- Cargo -->
+
+
+        <!-- CPF -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "CPF *"%>
+            <%= f.text_field :cpf, class: "form-control", id: "txt_employee_cpf", placeholder: "" %>
+
+          </div>
+        </div>
+        <!-- CPF -->
+
+
+        <!-- Nascimento -->
+        <div class="col-md-12">
+          <div class="form-group">
+
+            <%= f.label "Data de Nascimento *"%>
+
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <%= f.text_field :birthday, class: "form-control pull-right", id: "txt_employee_birthday", placeholder: "" %>
+            </div>
+
+
+          </div>
+        </div>
+        <!-- Nascimento -->
+
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+
+        <div class="form-group has-error">
+          <label class="control-label" for="inputError">
+            * Campos Obrigatórios
+          </label>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
