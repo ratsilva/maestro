@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ProjectsController, type: :controller do
-  
+=begin
   describe "Recebe uma requisição POST" do
     context "Não existe nenhum projeto ainda" do
       it "Cria um novo projeto" do
@@ -13,4 +13,5 @@ RSpec.describe ProjectsController, type: :controller do
       end
     end
   end
+=end
 end
