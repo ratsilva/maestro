@@ -1,6 +1,6 @@
 <section class="content-header">
   <h1>
-  Visualizar Projeto
+    Visualizar Projeto
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> DashBoard</a></li>
@@ -25,7 +25,7 @@
         <div class="box-body">
 
           <div class="row invoice-info">
-            
+
             <div class="col-sm-6 invoice-col">
               <address>
                 <strong>Dados do Projeto</strong><br>
@@ -49,17 +49,17 @@
                 
                 Status: 
                 <% if @project.status_projeto == "Sob Controle" %>
-                  <span class="label bg-blue">Sob Controle</span>
+                <span class="label bg-blue">Sob Controle</span>
                 <% elsif @project.status_projeto == "Alerta"%>
-                  <span class="label bg-yellow">Alerta</span>
+                <span class="label bg-yellow">Alerta</span>
                 <% elsif @project.status_projeto == "Alerta Crítico"%>
-                  <span class="label bg-red">Alerta Crítico</span>
+                <span class="label bg-red">Alerta Crítico</span>
                 <% elsif @project.status_projeto == "Cancelado"%>
-                  <span class="label bg-gray">Cancelado</span>
+                <span class="label bg-gray">Cancelado</span>
                 <% elsif @project.status_projeto == "Finalizado"%>
-                  <span class="label bg-green">Finalizado</span>
+                <span class="label bg-green">Finalizado</span>
                 <% else%>
-                  <span class="label bg-aqua">Não Iniciado</span>
+                <span class="label bg-aqua">Não Iniciado</span>
                 <% end %>
 
               </address>
@@ -68,10 +68,80 @@
 
             <div class="col-sm-12 invoice-col">
               <address>
-                  <strong>Resumo Executivo</strong><br>
-                  <%= @project.description %><br>
+                <strong>Resumo Executivo</strong><br>
+                <%= @project.description %><br>
               </address>
             </div>
+
+
+            <div class="col-sm-12 invoice-col">
+              <address>
+
+                <strong>Alocação de Funcionários</strong>
+                <br>
+
+                <div class="box-body table-responsive">
+
+                  <table class="table">
+
+                    <tr>
+                      <th>Excluir</th>
+                      <th>Funcionário</th>
+                      <th>Cargo</th>
+                    </tr>
+
+                    <% if @project.employees.length > 0 %>
+
+                    <% @project.employees.each do |employee| %>
+                    <tr>
+
+                      <td>
+
+                      <%= form_tag '/projects/delete_employee', :method => 'post' do %>
+
+                        <%= hidden_field_tag :project_id , @project.id %>
+                        <%= hidden_field_tag :employee_id , employee.id %>
+
+                        <%= button_tag class: "label bg-red", style: "border:none;"  do %>
+                        <i class="fa fa-times"></i>
+                        <% end %>
+
+                      <% end %>
+
+
+                      </td>
+
+
+
+
+                      <td><%= employee.name %></td>
+                      <td><%= employee.cargo %></td>
+
+                    </tr>
+                    <% end %>
+
+                    <% else %>
+
+                    Nenhuma alocação efetuada até o momento!
+
+                    <% end %>
+
+                    <button class="label bg-aqua pull-right" style="border:none;" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"> Adicionar Alocação</i></button>
+
+                  </table>
+                </div>
+
+                <% if flash[:alert] %>
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <i class="icon fa fa-ban"></i> <%= flash[:alert] %>
+
+        </div>
+        <% end %>
+
+              </address>
+            </div>
+
 
           </div>
 
@@ -106,3 +176,49 @@
   </div>
 </section>
 </section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Inserir Alocação</h4>
+      </div>
+      <div class="modal-body">
+
+        <form>
+
+            <label for="recipient-name" class="control-label">Funcionário:</label>
+
+            <%= form_tag('/projects/insert_employee', :method=>'post', :multipart => true) do %>
+            <% end %>
+
+
+
+            <%= form_tag('/projects/insert_employee/', :method => 'post', :multipart => true) do %>
+
+            <%= collection_select :teste, :id, Employee.all, :id, :name, {}, {:class=>'form-control'} %>
+
+
+              <%= hidden_field_tag :project_id , @project.id %>
+
+
+            <br><br>
+
+            <div class="modal-footer">
+              <span class="input-group-btn">
+                <%= submit_tag "Inserir", :class => "btn btn-default fa fa-search"%>
+              </span>
+            </div>
+
+            <% end %>
+
+
+
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

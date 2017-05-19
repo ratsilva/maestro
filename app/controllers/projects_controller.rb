@@ -16,6 +16,33 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @clients = Client.all
   end
+
+  def insert_employee
+
+    @project = Project.find(params[:project_id])
+    @employee = Employee.find(params[:teste][:id])
+    
+    if @project.employees.include?(@employee)
+      flash[:alert] = "Funcionário já alocado para o projeto!"
+    else 
+      @project.employees << @employee
+    end
+
+    redirect_to @project
+
+  end
+
+  def delete_employee
+
+
+    @project = Project.find(params[:project_id])
+    @employee = Employee.find(params[:employee_id])
+    @project.employees.delete(@employee)
+
+    redirect_to @project
+
+  end
+
   
   def create
     @project = Project.new(project_params)
