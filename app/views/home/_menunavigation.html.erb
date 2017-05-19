@@ -31,27 +31,25 @@
           <li class="header">MAIN NAVIGATION</li>
           
           <!-- DashBoard -->
-          <li class="active treeview">
-            <a href="/">
-              <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            </a>
+          <li class="<%= active_class('dashboard') %> treeview">
+            <%= link_to '<i class="fa fa-dashboard"></i><span>Dashboard</span>'.html_safe, dashboard_path %>
           </li>
 
           <!-- Projetos -->
-          <li class="treeview">
+          <li class="<%= active_class('projects') %> treeview">
             <%= link_to '<i class="fa fa-briefcase"></i><span>Projetos</span>'.html_safe, projects_path %>
               
           </li>
 
           <!-- Clientes -->
-          <li class="treeview">
+          <li class="<%= active_class('clients') %> treeview">
             <a href="/clients">
               <i class="fa fa-handshake-o"></i> <span>Clientes</span>
             </a>
           </li>
 
           <!-- Funcionários -->
-          <li class="treeview">
+          <li class="<%= active_class('employees') %> treeview">
             <a href="/employees">
               <i class="fa fa-users"></i> <span>Funcionários</span>
             </a>
