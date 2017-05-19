@@ -53,6 +53,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chartkick (2.2.4)
     codeclimate-test-reporter (1.0.8)
       simplecov (<= 0.13)
     coffee-rails (4.2.1)
@@ -222,6 +223,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara
+  chartkick
   codeclimate-test-reporter (~> 1.0.0)
   coffee-rails (~> 4.2)
   database_cleaner

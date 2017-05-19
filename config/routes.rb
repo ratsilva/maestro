@@ -9,5 +9,9 @@ Rails.application.routes.draw do
   root "home#index"
 
   get '/general' => 'home#general'
+  
+  post '/projects/insert_employee'
+  post '/projects/delete_employee'
+  get 'dashboard' => 'dashboard#index'
 
 end
