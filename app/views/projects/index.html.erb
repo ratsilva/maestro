@@ -1,41 +1,96 @@
-<!-- Projects index -->
 <section class="content-header">
-	<h1>Projetos</h1>
-	<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-	  <li class="active">Projetos</li>
-	</ol>
+  <h1>
+    Lista de Projetos
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> DashBoard</a></li>
+    <li class="active">Projetos</li>
+  </ol>
 </section>
+
 <section class="content">
   <div class="row">
     <div class="col-md-12">
       <div class="box box-info">
+
+        <div class="box-header">
+          <h3 class="box-title">Projetos</h3>
+        </div>
+
+
         <div class="box-body">
+
           <div class="col-md-3">
-            <%= link_to 'Novo Projeto', new_project_path, class: 'btn btn-block btn-info' %>
+            <td>
+              <a class="btn btn-block btn-info" href="/projects/new">Cadastrar Projeto</a>
+            </td>
           </div>
+
+          <div class="box-tools pull-right">
+            <div class="input-group input-group-sm">
+              <%= form_tag :projects, :class => "input-group custom-search-form", :method => 'get' do %>
+              <%= text_field_tag :search, params[:search], :class => "form-control", :placeholder => "Digite aqui" %>
+
+              <span class="input-group-btn">
+                <%= submit_tag "Pesquisar", :class => "btn btn-default fa fa-search"%>
+              </span>
+              
+              <% end %>
+            </div>
+          </div>
+
+
         </div>
-	      <div class="box-body table-responsive">
-		      <table class="table">
-		        <tr>
-		          <th>Nome</th>
-		          <th>Data início</th>
-		          <th>Data fim</th>
-		          <th>Ações</th>
-		        </tr>
-		        <% @projects.each do |project| %>
-		          <tr>
-		            <td><%= project.name %></td>
-		            <td><%= project.date_begin %></td>
-		            <td><%= project.date_end %></td>
-		            <td><%= link_to "Ver", project %></td>
-		            <!--<td><%= link_to "Remover", project, method: :delete %></td>-->
-		          </tr>
-		        <% end %>
-		      </table>
+
+        <div class="box-body table-responsive">
+
+          <table class="table">
+
+            <tr>
+              <th>Abrir</th>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Cliente</th>
+              <th>Status</th>
+              <th>Tipo</th>
+            </tr>
+
+            <% @projects.each do |project| %>
+            <tr>
+
+              <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, project%></td>
+              <td><%= project.id %></td>
+              <td><%= project.name %></td>
+              <td><%= Client.find_by_id(project.client_id).company_name  %></td>
+              
+              <td>
+
+                <% if project.status_projeto == "Sob Controle" %>
+                	<span class="label bg-blue">Sob Controle</span>
+                <% elsif project.status_projeto == "Alerta"%>
+                	<span class="label bg-yellow">Alerta</span>
+            	<% elsif project.status_projeto == "Alerta Crítico"%>
+                	<span class="label bg-red">Alerta Crítico</span>
+            	<% elsif project.status_projeto == "Cancelado"%>
+                	<span class="label bg-gray">Cancelado</span>
+            	<% elsif project.status_projeto == "Finalizado"%>
+                	<span class="label bg-green">Finalizado</span>
+                <% else%>
+                	<span class="label bg-aqua">Não Iniciado</span>
+                <% end %>
+
+              </td>
+
+              <td><%= project.tipo %></td>
+            </tr>
+            <% end %>
+
+          </table>
         </div>
+
+
       </div>
     </div>
   </div>
-</section>
 
+</section>

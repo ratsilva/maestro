@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.all
+    @projects = Project.search(params[:search])
   end
   
   def show
@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
     else
       if @project.errors.any?
         @project.errors.each do |field, msg|
-          flash[:alert] = msg
+          flash[:alert] = field
         end
       end
       redirect_to new_project_path
@@ -45,6 +45,8 @@ class ProjectsController < ApplicationController
   
   private
     def project_params
-      params.require(:project).permit(:name, :date_begin, :date_end, :cost, :description, :client_id)
+      params.require(:project).permit(:name, :date_begin, :date_end, :cost, :description, 
+        :client_id, :qtd_entregaveis, :qtd_parcelas, :qtd_horas, :status_projeto, :fase_projeto,
+        :tipo, :plataforma)
     end
 end

@@ -1,49 +1,108 @@
-<!-- mostrar cliente -->
 <section class="content-header">
-  <h1><%= @project.name %></h1>
+  <h1>
+  Visualizar Projeto
+  </h1>
   <ol class="breadcrumb">
-	  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-	  <li><%= link_to '<i class="fa fa-briefcase"></i>Projetos'.html_safe, projects_path%></li>
-		<li class="active"><%= @project.name %></li>
-	</ol>
+    <li><a href="/"><i class="fa fa-dashboard"></i> DashBoard</a></li>
+    <li class="active">Projetos</li>
+  </ol>
 </section>
+
 <section class="content">
   <div class="row">
     <div class="col-md-12">
       <div class="box box-info">
-        <div class="box-body">
-          <div class="row invoice-info">
-            <div class="col-sm-6 invoice-col">
-              <dl>
-                <dt>Data de início:</dt>
-                <dd><%= @project.date_begin %></dd>
 
-                <dt>Data fim:</dt>
-                <dd><%= @project.date_end %></dd>
-
-                <dt>Custo:</dt>
-                <dd><%= @project.cost %></dd>
-
-                <dt>Descrição:</dt>
-                <dd><%= @project.description %></dd>
-                <dt>Cliente:</dt>
-                <dd><%= @project.client.company_name %></dd>
-              </dl>
-            </div>
-            
-          </div>
-          <%= link_to '<i class="fa fa-arrow-left"> Voltar</i>'.html_safe, :projects, class: 'btn btn-success' %>
-          <%= link_to '<i class="fa fa-pencil"> Editar</i>'.html_safe, edit_project_path, class:'btn btn-primary pull-right' %>
-          <%= form_tag @project, :method => 'delete' do %>
-
-            <%= button_tag class: "btn btn-primary pull-right" do %>
-            <i class="fa fa-times"> Excluir</i>
-            <% end %>
-
-          <% end %>
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-globe"></i>  <%= @project.name %>
+            <small class="pull-right">Data Cadastro: <%= @project.created_at.to_s(:long) %></small>
+          </h2>
         </div>
+
+
+
+        <div class="box-body">
+
+          <div class="row invoice-info">
+            
+            <div class="col-sm-6 invoice-col">
+              <address>
+                <strong>Dados do Projeto</strong><br>
+                Nome do Projeto: <%= @project.name %><br>
+                Cliente: <%= Client.find_by_id(@project.client_id).company_name %><br>
+                Horas: <%= @project.qtd_horas %><br>
+                Custo: <%= @project.cost %><br>
+                Parcelas: <%= @project.qtd_parcelas %><br>
+                Entregáveis: <%= @project.qtd_entregaveis %>
+              </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6 invoice-col">
+              <address>
+                <strong></strong><br>
+                Data Início: <%= @project.date_begin %><br>
+                Data Fim: <%= @project.date_end %><br>
+                Fase: <%= @project.fase_projeto %><br>
+                Tipo: <%= @project.tipo %><br>
+                Plataforma: <%= @project.plataforma %><br>
+                
+                Status: 
+                <% if @project.status_projeto == "Sob Controle" %>
+                  <span class="label bg-blue">Sob Controle</span>
+                <% elsif @project.status_projeto == "Alerta"%>
+                  <span class="label bg-yellow">Alerta</span>
+                <% elsif @project.status_projeto == "Alerta Crítico"%>
+                  <span class="label bg-red">Alerta Crítico</span>
+                <% elsif @project.status_projeto == "Cancelado"%>
+                  <span class="label bg-gray">Cancelado</span>
+                <% elsif @project.status_projeto == "Finalizado"%>
+                  <span class="label bg-green">Finalizado</span>
+                <% else%>
+                  <span class="label bg-aqua">Não Iniciado</span>
+                <% end %>
+
+              </address>
+
+            </div>
+
+            <div class="col-sm-12 invoice-col">
+              <address>
+                  <strong>Resumo Executivo</strong><br>
+                  <%= @project.description %><br>
+              </address>
+            </div>
+
+          </div>
+
+
+          <div class="row no-print">
+            <div class="col-xs-12">
+
+              <%= link_to '<i class="fa fa-arrow-left"> Voltar</i>'.html_safe, :projects, :class => 'btn btn-success' %>
+
+              <%= link_to '<i class="fa fa-pencil"> Editar</i>'.html_safe, edit_project_path, :class => 'btn btn-primary pull-right' %>
+
+              <br>
+              <br>
+              <%= form_tag @project, :method => 'delete' do %>
+
+              <%= button_tag class: "btn btn-primary pull-right" do %>
+              <i class="fa fa-times"> Excluir</i>
+              <% end %>
+
+              <% end %>
+
+            </div>
+          </div>
+
+
+
+        </div>
+
+
       </div>
     </div>
   </div>
-  
+</section>
 </section>
