@@ -1,65 +1,236 @@
-<!-- Project form -->
-<div class="box-body">
-<%= form_for(@project, html: { class: "form-horizontal", role: "form" }) do |f| %>
-  <% if @project.errors.any? %>
-    <div class="alert alert-danger alert-dismissable" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h4>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
 
-      <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <% if flash[:alert] %>
-    <div class="alert alert-danger alert-dismissible">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <i class="icon fa fa-ban"></i> <%= flash[:alert] %>
-    </div>
-  <% end %>
+        <div class="box-header">
+          <h3 class="box-title">Novo Projeto</h3>
+        </div>
 
-  <div class="form-group">
-    <%= f.label "Nome", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :name, class: "form-control" %>
+
+
+        <%= form_for(@project, html: { class: "box-body", role: "form" }) do |f| %>
+        <% if @project.errors.any? %>
+        <div class="alert alert-danger alert-dismissable" role="alert">
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h4>
+
+          <ul>
+            <% @project.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+
+        <% if flash[:alert] %>
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <i class="icon fa fa-ban"></i> <%= flash[:alert] %>
+
+        </div>
+        <% end %>
+
+        <!-- Nome do Projeto -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Nome do Projeto *" %>
+
+            <%= f.text_field :name, class: "form-control", id: "txt_nome_projeto", placeholder: "" %>
+
+          </div>
+        </div>
+        <!-- Nome do Projeto -->
+
+
+        <!-- Cliente -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Nome da Empresa *"%>
+
+            <%= f.collection_select :client_id, @clients, :id, :company_name, {}, {:class=>'form-control', :id => 'txt_nome_empresa'} %>
+
+
+          </div>
+        </div>
+        <!-- Cliente -->
+
+
+        <!-- Qtd Horas -->
+        <div class="col-md-4">
+          <div class="form-group">
+
+            <%= f.label "Horas de Desenvolvimento *" %>
+
+            <%= f.text_field :qtd_horas, class: "form-control", id: "txt_nome_projeto", placeholder: "" %>
+
+          </div>
+        </div>
+        <!-- Qtd Horas -->
+
+
+        <!-- Custo -->
+        <div class="col-md-4">
+          <div class="form-group">
+
+            <%= f.label "Custo *"%>
+
+            <%= f.text_field :cost, class: "form-control", id: "txt_nome_projeto", placeholder: "" %>
+
+
+          </div>
+        </div>
+        <!-- Custo -->
+
+
+
+        <!-- Parcelas -->
+        <div class="col-md-4">
+          <div class="form-group">
+
+            <%= f.label "Parcelas de Pagamento *"%>
+
+            <%= f.select(:qtd_parcelas, ['1', '2', '3','4', '5', '6','7', '8', '9','10', '11', '12'], {}, { :class => 'form-control' }) %>
+
+
+
+          </div>
+        </div>
+        <!-- Parcelas -->
+
+
+        <!-- Resumo Executivo -->
+        <div class="col-md-12">
+          <div class="form-group">
+
+            <%= f.label "Resumo Executivo *"%>
+
+            <%= f.text_area :description, class: "form-control", id: "txt_nome_projeto", placeholder: "" %>
+
+          </div>
+        </div>
+        <!-- Resumo Executivo -->
+
+
+        <!-- Data Início -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Data Início *" %>
+
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <%= f.text_field :date_begin, class: "form-control pull-right", id: "txt_employee_birthday", placeholder: "" %>
+            </div>
+
+          </div>
+        </div>
+        <!-- Data Início -->
+
+
+        <!-- Data Término -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Data Término *" %>
+
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <%= f.text_field :date_end, class: "form-control pull-right", id: "txt_employee_birthday", placeholder: "" %>
+            </div>
+
+          </div>
+        </div>
+        <!-- Data Término -->
+
+
+        <!-- Entregáveis -->
+        <div class="col-md-4">
+          <div class="form-group">
+
+            <%= f.label "Quantidade de Entregas *"%>
+
+            <%= f.text_field :qtd_entregaveis, class: "form-control", id: "txt_nome_projeto", placeholder: "" %>
+
+
+          </div>
+        </div>
+        <!-- Entregáveis -->
+
+
+        <!-- Status -->
+        <div class="col-md-4">
+          <div class="form-group">
+
+            <%= f.label "Status do Projeto *"%>
+
+            <%= f.select(:status_projeto, ['Sob Controle', 'Alerta', 'Alerta Crítico','Cancelado', 'Finalizado', 'Não Iniciado'], {}, { :class => 'form-control' }) %>
+
+
+          </div>
+        </div>
+        <!-- Status -->
+
+
+        <!-- Fase -->
+        <div class="col-md-4">
+          <div class="form-group">
+
+            <%= f.label "Fase do Projeto *"%>
+
+            <%= f.select(:fase_projeto, ['Análise de Escopo', 'Análise de Requisitos', 'Desenho da Solução','Construção', 'Testes', 'Homologação', 'Implantação', 'Pós-Implantação', 'Rollout'], {}, { :class => 'form-control' }) %>
+
+
+          </div>
+        </div>
+        <!-- Fase -->
+
+
+        <!-- Tipo -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Tipo do Projeto *"%>
+
+            <%= f.select(:tipo, ['Risco Operacional', 'Demanda Legal', 'Melhorias e Benefícios','Corretivo'], {}, { :class => 'form-control' }) %>
+
+
+          </div>
+        </div>
+        <!-- Tipo -->
+
+
+        <!-- Plataforma -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Plataforma *"%>
+
+            <%= f.select(:plataforma, ['WEB', 'Mobile - Android', 'Mobile - iOS','Mobile - Multiplataforma', 'Desktop'], {}, { :class => 'form-control' }) %>
+
+
+          </div>
+        </div>
+        <!-- Plataforma -->
+
+
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+
+        <div class="form-group has-error">
+          <label class="control-label" for="inputError">
+            * Campos Obrigatórios
+          </label>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label "Início", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.date_select :date_begin, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label "Fim", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.date_select :date_end, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label "Cliente", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.collection_select :client_id, @clients, :id, :company_name %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label "Custo", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :cost, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label "Descrição", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_area :description, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit class: "btn btn-primary" %>
-    </div>
-  </div>
-<% end %>
-</div>
+</section>

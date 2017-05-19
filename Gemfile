@@ -69,3 +69,4 @@ platforms :mswin do
 end
 
 gem 'devise'
+gem 'chartkick'

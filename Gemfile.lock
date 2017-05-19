@@ -42,6 +42,7 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
     bcrypt (3.1.11)
+    bcrypt (3.1.11-x86-mingw32)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (9.0.6)
@@ -52,6 +53,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chartkick (2.2.4)
     codeclimate-test-reporter (1.0.8)
       simplecov (<= 0.13)
     coffee-rails (4.2.1)
@@ -79,6 +81,7 @@ GEM
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
     ffi (1.9.18)
+    ffi (1.9.18-x86-mingw32)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.1)
@@ -107,8 +110,11 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
+    nokogiri (1.7.2-x86-mingw32)
+      mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
     pg (0.20.0)
+    pg (0.20.0-x86-mingw32)
     public_suffix (2.0.5)
     puma (3.8.2)
     rack (2.0.2)
@@ -193,6 +199,8 @@ GEM
     turbolinks-source (5.0.3)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2017.2)
+      tzinfo (>= 1.0.0)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
@@ -210,10 +218,12 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   byebug
   capybara
+  chartkick
   codeclimate-test-reporter (~> 1.0.0)
   coffee-rails (~> 4.2)
   database_cleaner
