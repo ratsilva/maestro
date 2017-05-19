@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   get '/general' => 'home#general'
+  
+  get 'dashboard' => 'dashboard#index'
 
 end
