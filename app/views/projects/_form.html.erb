@@ -50,7 +50,7 @@
 
             <%= f.label "Nome da Empresa *"%>
 
-            <%= f.collection_select :client_id, @clients, :id, :company_name, {}, {:class=>'form-control'} %>
+            <%= f.collection_select :client_id, @clients, :id, :company_name, {}, {:class=>'form-control', :id => 'txt_nome_empresa'} %>
 
 
           </div>
