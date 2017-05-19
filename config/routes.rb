@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   
   post '/projects/insert_employee'
   post '/projects/delete_employee'
-
+  get 'dashboard' => 'dashboard#index'
 
 end
