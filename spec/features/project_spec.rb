@@ -1,10 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "Projeto", type: :feature do
+  before :each do
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
+  end
+
   context "na homepage" do
     it "ver todos os projetos" do
       visit root_path
-      click_link('Projeto')
+      click_link('Projetos')
       expect(current_path).to eq(projects_path)
     end
   end
