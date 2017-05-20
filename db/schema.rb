@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170518030931) do
     t.string   "status"
   end
 
+<<<<<<< HEAD
   create_table "deliveries", force: :cascade do |t|
     t.string   "software"
     t.string   "versao"
@@ -45,6 +46,8 @@ ActiveRecord::Schema.define(version: 20170518030931) do
     t.index ["project_id"], name: "index_deliveries_on_project_id", using: :btree
   end
 
+=======
+>>>>>>> master
   create_table "employees", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
