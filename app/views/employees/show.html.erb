@@ -43,6 +43,78 @@
                 Data de Nascimento: <%= @employee.birthday %>
               </address>
             </div>
+
+
+            <div class="col-sm-12 invoice-col">
+              <address>
+
+              <strong>Atribuição de Conhecimentos</strong>
+
+                <button class="label bg-aqua pull-right" style="border:none;" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"> Adicionar Conhecimento</i></button>
+                <br>
+
+                <div class="box-body table-responsive">
+
+                  <table class="table">
+
+                    <tr>
+                      <th>Excluir</th>
+                      <th>Conhecimento</th>
+                      <th>Tipo</th>
+                    </tr>
+
+                    <% if @employee.knowledges.length > 0 %>
+
+                    <% @employee.knowledges.each do |knowledge| %>
+                    <tr>
+
+                      <td>
+
+                        <%= form_tag '/employees/delete_knowledge', :method => 'post' do %>
+
+                        <%= hidden_field_tag :employee_id , @employee.id %>
+                        <%= hidden_field_tag :knowledge_id , knowledge.id %>
+
+                        <%= button_tag class: "label bg-red", style: "border:none;"  do %>
+                        <i class="fa fa-times"></i>
+                        <% end %>
+
+                        <% end %>
+
+
+                      </td>
+
+
+
+
+                      <td><%= knowledge.name %></td>
+                      <td><%= knowledge.group %></td>
+
+                    </tr>
+                    <% end %>
+
+                    <% else %>
+
+                    Nenhum conhecimento adicionado até o momento!
+
+                    <% end %>
+
+                  </table>
+                </div>
+
+                <% if flash[:alert] %>
+                <div class="alert alert-danger alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <i class="icon fa fa-ban"></i> <%= flash[:alert] %>
+
+                </div>
+                <% end %>
+
+              </address>
+            </div>
+
+
+
           </div>
 
 
@@ -53,13 +125,13 @@
 
               <%= link_to '<i class="fa fa-pencil"> Editar</i>'.html_safe, edit_employee_path, :class => 'btn btn-primary pull-right' %>
 
-<br>
-<br>
+              <br>
+              <br>
               <%= form_tag @employee, :method => 'delete' do %>
 
-                <%= button_tag class: "btn btn-primary pull-right" do %>
-                <i class="fa fa-times"> Excluir</i>
-                <% end %>
+              <%= button_tag class: "btn btn-primary pull-right" do %>
+              <i class="fa fa-times"> Excluir</i>
+              <% end %>
 
               <% end %>
 
@@ -76,3 +148,48 @@
   </div>
 </section>
 </section>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Inserir Alocação</h4>
+      </div>
+      <div class="modal-body">
+
+        <form>
+
+          <label for="recipient-name" class="control-label">Funcionário:</label>
+
+          <%= form_tag('/employees/insert_knowledge/', :method=>'post', :multipart => true) do %>
+          <% end %>
+
+
+
+          <%= form_tag('/employees/insert_knowledge/', :method => 'post', :multipart => true) do %>
+
+          <%= collection_select :teste, :id, Knowledge.all, :id, :name, {}, {:class=>'form-control'} %>
+
+
+          <%= hidden_field_tag :employee_id , @employee.id %>
+
+
+          <br><br>
+
+          <div class="modal-footer">
+            <span class="input-group-btn">
+              <%= submit_tag "Inserir", :class => "btn btn-default fa fa-search"%>
+            </span>
+          </div>
+
+          <% end %>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

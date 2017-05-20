@@ -1,5 +1,31 @@
 class EmployeesController < ApplicationController
   before_action :authenticate_user!
+
+  def insert_knowledge
+
+    @employee = Employee.find(params[:employee_id])
+    @knowledge = Knowledge.find(params[:teste][:id])
+    
+    if @employee.knowledges.include?(@knowledge)
+      flash[:alert] = "Conhecimento já atribuído ao funcionário!"
+    else 
+      @employee.knowledges << @knowledge
+    end
+
+    redirect_to @employee
+
+  end
+
+  def delete_knowledge
+
+    @employee = Employee.find(params[:employee_id])
+    @knowledge = Knowledge.find(params[:knowledge_id])
+    @employee.knowledges.delete(@knowledge)
+
+    redirect_to @employee
+
+  end
+  
   def index
     @employees = Employee.search(params[:search])
   end
