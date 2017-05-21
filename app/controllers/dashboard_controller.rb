@@ -1,11 +1,10 @@
 class DashboardController < ApplicationController
   def index
-    @projects = Project.all.includes(:client)
-    @projects_client = @projects.group(:client).count
-    @data_projects_client = []
-    @projects_client.each do |client, c|
-      @data_projects_client << [client.company_name, c]
-    end
-    
+    graphics = GraphicData.new
+    @data_projects_client = graphics.projects_client
+    @data_employees = graphics.employees
+    @data_project_status = graphics.project_status
+    @data_projects_timeline = graphics.projects_timeline
   end
+  
 end

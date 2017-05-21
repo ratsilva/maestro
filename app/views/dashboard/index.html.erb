@@ -26,6 +26,9 @@
         
         <div class="box-body">
           <%= column_chart @data_projects_client, stacked: true, library: {title: "Número de projetos por cliente", hAxis: {title: "Clientes"}, vAxis:{title: "Quantidade de Projetos"}} %>
+          <%= pie_chart @data_project_status, library: {title: "Status dos projetos"} %>
+          <%= pie_chart @data_employees, library: {title: "Alocação dos funcionários"} %>
+          <!--<%= timeline @data_projects_timeline %>-->
         </div>
         
       </div>
