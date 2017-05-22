@@ -5,6 +5,7 @@ class DashboardController < ApplicationController
     @data_employees = graphics.employees
     @data_project_status = graphics.project_status
     @data_projects_timeline = graphics.projects_timeline
+    @data_clients_status = graphics.clients_status
   end
   
 end

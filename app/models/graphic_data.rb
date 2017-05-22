@@ -27,8 +27,13 @@ class GraphicData
     projects = Project.all
     timeline = []
     projects.each do |project|
-      timeline = [project.name, project.date_begin, project.date_end]
+      timeline << [project.name, project.date_begin, project.date_end]
     end
+    timeline
+  end
+  
+  def clients_status
+    clients = Client.all.group(:status).count
   end
   
 end

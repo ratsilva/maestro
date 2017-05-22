@@ -10,31 +10,66 @@
   </ol>
 </section>
 <section class="content">
-  <div class="row">
-    <div class="col-md-12">
+<div class="row">
+  <div class="col-md-12">
     
-    
-      <div class="box box-info">
       
-        <div class="box-header">
-          <div class="col-xs-12">
-            <h2 class="page-header">
-              <i class="fa fa-globe"></i>  Gráficos
-            </h2>
+
+        <div class="nav-tabs-custom">
+        
+          <ul class="nav nav-tabs pull-right">
+            <li class="active"><a href="#projects-charts" data-toggle="tab">Projetos</a></li>
+            <li><a href="#employees-charts" data-toggle="tab">Funcionários</a></li>
+            <li><a href="#clients-charts" data-toggle="tab">Clientes</a></li>
+            <li class="pull-left header"><i class="fa fa-line-chart"></i> Gráficos</li>
+          </ul>
+          
+          <div class="tab-content no-padding">
+          
+            <div class="chart tab-pane active" id="projects-charts">
+            
+              <h3>Status dos projetos</h3>
+              <div class="chart">
+                <%= pie_chart @data_project_status, donut: true %>
+              </div>
+              
+              <h3>Número de projetos por cliente</h3>
+              <div class="chart">
+                <%= column_chart @data_projects_client, stacked: true, library: {hAxis: {title: "Clientes"}, vAxis:{title: "Quantidade de Projetos"}} %>
+              </div>
+              
+              <h3>Linha do Tempo</h3>
+              <div class="chart">
+                <%= timeline @data_projects_timeline, library: {title: "Duração dos projetos"} %>
+              </div>
+
+            </div>
+            
+            <div class="chart tab-pane" id="employees-charts">
+            
+              <h3>Alocação dos funcionários</h3>
+              <div class="chart">
+                <%= column_chart @data_employees, xtitle: "Número de projetos que o funcionário está alocado", ytitle: "Funcionários" %>
+              </div>
+              
+            </div>
+            
+            <div class="chart tab-pane" id="clients-charts">
+            
+              <h3>Status dos clientes</h3>
+              <div class="chart">
+                <%= pie_chart @data_clients_status %>
+              </div>
+              
+            </div>
+            
           </div>
+
+          
         </div>
-        
-        <div class="box-body">
-          <%= column_chart @data_projects_client, stacked: true, library: {title: "Número de projetos por cliente", hAxis: {title: "Clientes"}, vAxis:{title: "Quantidade de Projetos"}} %>
-          <%= pie_chart @data_project_status, library: {title: "Status dos projetos"} %>
-          <%= pie_chart @data_employees, library: {title: "Alocação dos funcionários"} %>
-          <!--<%= timeline @data_projects_timeline %>-->
-        </div>
-        
-      </div>
       
       
-    </div>
+    </div>  
   </div>
 </section>
 
