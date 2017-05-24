@@ -224,7 +224,7 @@
 
               <%= image_tag("user2-160x160.jpg", :class => "user-image", :alt => "User Image") %>
 
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><%= current_user.name %></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -232,7 +232,7 @@
                 <%= image_tag("user2-160x160.jpg", :class => "img-circle", :alt => "User Image") %>
 
                 <p>
-                  Alexander Pierce - Web Developer
+                  <%= current_user.name %> - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -243,7 +243,16 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <%= form_tag destroy_user_session_path, :method => 'delete' do %>
+
+                    <%= button_tag class: "btn btn-default btn-flat" do %>
+                      Sign out
+                    <% end %>
+
+                  <% end %>
+
+                  <!--<%= link_to('Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-default btn-flat') %> -->
+                  <!--<a href="#" class="btn btn-default btn-flat">Sign out</a>-->
                 </div>
               </li>
             </ul>

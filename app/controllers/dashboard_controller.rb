@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+  before_action :authenticate_user!
   def index
     graphics = GraphicData.new
     @data_projects_client = graphics.projects_client
