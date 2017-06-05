@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orcamentos
   devise_for :users
 
   resources :projects

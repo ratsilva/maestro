@@ -70,3 +70,4 @@ end
 
 gem 'devise'
 gem 'chartkick'
+gem "prawn", "0.8.4"

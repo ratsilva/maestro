@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @orcamento.id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @orcamento.description %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @orcamento.text %>
+</p>
+
+<p>
+  <strong>Employess projects:</strong>
+  <%= @orcamento.employess_projects %>
+</p>
+
+<p>
+  <strong>Clients:</strong>
+  <%= @orcamento.clients %>
+</p>
+
+<%= link_to 'Edit', edit_orcamento_path(@orcamento) %> |
+<%= link_to 'Back', orcamentos_path %>
