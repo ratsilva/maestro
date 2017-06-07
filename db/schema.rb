@@ -34,17 +34,6 @@ ActiveRecord::Schema.define(version: 20170519235206) do
     t.string   "status"
   end
 
-  create_table "deliveries", force: :cascade do |t|
-    t.string   "software"
-    t.string   "versao"
-    t.string   "entregavel"
-    t.binary   "anexo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "project_id"
-    t.index ["project_id"], name: "index_deliveries_on_project_id", using: :btree
-  end
-
   create_table "employees", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -115,6 +104,5 @@ ActiveRecord::Schema.define(version: 20170519235206) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "deliveries", "projects"
   add_foreign_key "projects", "clients"
 end
