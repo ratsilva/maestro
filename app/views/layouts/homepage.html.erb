@@ -2,20 +2,12 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <%= stylesheet_link_tag "bootstrap.min.css" %>
+    
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-
-    <%= stylesheet_link_tag "bootstrap.min.css" %>
-    <%= stylesheet_link_tag "AdminLTE.min.css" %>
-    <%= stylesheet_link_tag "_all-skins.min.css" %>
-    <%= stylesheet_link_tag "blue.css" %>
-    <%= stylesheet_link_tag "jquery-jvectormap-1.2.2.css" %>
-    <%= stylesheet_link_tag "datepicker3.css" %>
-    <%= stylesheet_link_tag "daterangepicker.css" %>
-    <%= stylesheet_link_tag "bootstrap3-wysihtml5.min.css" %>
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css' %>
+	  <%= stylesheet_link_tag 'https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css' %>
+	  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css' %>
 
   </head>
 
@@ -25,11 +17,8 @@
     <%= image_tag ('maestro_logo_burned') %>
   
     <%= yield %>
-
-
     
-    <%= javascript_include_tag "jquery-2.2.3.min.js" %>
-    <%= javascript_include_tag "bootstrap.min.js" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </div>
   </body>
 </html>
