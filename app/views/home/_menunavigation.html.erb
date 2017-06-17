@@ -56,11 +56,11 @@
           </li>
 
           <!-- Orçamentos -->
-          <li class="treeview">
-            <a href="/">
-              <i class="fa fa-shopping-cart"></i> <span>Orçamentos</span>
-            </a>
+          <li class="<%= active_class('projects') %> treeview">
+            <%= link_to '<i class="fa fa-shopping-cart"></i><span>Orcamentos</span>'.html_safe, orcamentos_path %>
+              
           </li>
+
 
           <!-- Propostas Técnicas -->
           <li class="treeview">

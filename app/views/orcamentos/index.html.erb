@@ -1,0 +1,80 @@
+<section class="content-header">
+  <h1>
+    Lista de Orcamentos
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> DashBoard</a></li>
+    <li class="active">Orcamentos</li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+
+        <div class="box-header">
+          <h3 class="box-title">Orcamentos</h3>
+        </div>
+
+
+        <div class="box-body">
+
+          <div class="col-md-3">
+            <td>
+              <a class="btn btn-block btn-info" href="/orcamentos/new">Cadastrar Orcamento</a>
+            </td>
+          </div>
+
+          <div class="box-tools pull-right">
+            <div class="input-group input-group-sm">
+              <%= form_tag :orcamentos, :class => "input-group custom-search-form", :method => 'get' do %>
+              <%= text_field_tag :search, params[:search], :class => "form-control", :placeholder => "Digite aqui" %>
+
+              <span class="input-group-btn">
+                <%= submit_tag "Pesquisar", :class => "btn btn-default fa fa-search"%>
+              </span>
+              
+              <% end %>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="box-body table-responsive">
+
+          <table class="table">
+
+            <tr>
+              <th>Abrir</th>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Cliente</th>
+              <th>Projeto</th>
+              <th>Valor Atual</th>
+			        <th>Valor Planejado</th>
+            </tr>
+
+            <% @orcamentos.each do |orcamento| %>
+            <tr>
+
+              <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, orcamento%></td>
+              <td><%= orcamento.id %></td>
+              <td><%= orcamento.name %></td>
+              <td><%= Client.find_by_id(orcamento.client_id).company_name  %></td>
+              <td><%= Project.find_by_id(orcamento.project_id).name  %></td>
+              <td><%= orcamento.valorAtual %></td>
+			        <td><%= orcamento.valorPlanejado %></td>
+            </tr>
+            <% end %>
+
+          </table>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</section>

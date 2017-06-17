@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519235206) do
+ActiveRecord::Schema.define(version: 20170617030818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,17 +32,6 @@ ActiveRecord::Schema.define(version: 20170519235206) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "status"
-  end
-
-  create_table "deliveries", force: :cascade do |t|
-    t.string   "software"
-    t.string   "versao"
-    t.string   "entregavel"
-    t.binary   "anexo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "project_id"
-    t.index ["project_id"], name: "index_deliveries_on_project_id", using: :btree
   end
 
   create_table "employees", force: :cascade do |t|
@@ -76,6 +65,18 @@ ActiveRecord::Schema.define(version: 20170519235206) do
     t.string   "group"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orcamentos", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "valorAtual"
+    t.integer  "valorPlanejado"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "client_id"
+    t.integer  "project_id"
+    t.index ["client_id"], name: "index_orcamentos_on_client_id", using: :btree
+    t.index ["project_id"], name: "index_orcamentos_on_project_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|
@@ -115,6 +116,5 @@ ActiveRecord::Schema.define(version: 20170519235206) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "deliveries", "projects"
   add_foreign_key "projects", "clients"
 end

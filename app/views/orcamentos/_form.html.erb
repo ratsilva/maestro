@@ -1,0 +1,128 @@
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+
+        <div class="box-header">
+          <h3 class="box-title">Novo Orcamento</h3>
+        </div>
+
+
+
+        <%= form_for(@orcamento, html: { class: "box-body", role: "form" }) do |f| %>
+        <% if @orcamento.errors.any? %>
+        <div class="alert alert-danger alert-dismissable" role="alert">
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4><%= pluralize(@orcamento.errors.count, "error") %> prohibited this orcamento from being saved:</h4>
+
+          <ul>
+            <% @orcamento.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+
+        <% if flash[:alert] %>
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <i class="icon fa fa-ban"></i> <%= flash[:alert] %>
+
+        </div>
+        <% end %>
+
+        <!-- Nome do Orcamento -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Nome do Orcamento *" %>
+
+            <%= f.text_field :name, class: "form-control", id: "txt_nome_orcamento", placeholder: "" %>
+
+          </div>
+        </div>
+        <!-- Nome do Orcamento -->
+
+
+        <!-- Cliente -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Nome da Empresa *"%>
+
+            <%= f.collection_select :client_id, @clients, :id, :company_name, {}, {:class=>'form-control', :id => 'txt_nome_empresa'} %>
+
+
+          </div>
+        </div>
+        <!-- Cliente -->
+		
+		<!-- Projeto -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Nome do Projeto *"%>
+
+            <%= f.collection_select :project_id, @projects, :id, :name, {}, {:class=>'form-control', :id => 'txt_nome_projeto'} %>
+
+
+          </div>
+        </div>
+        <!-- Projeto -->
+
+
+
+        <!-- Valor Atual -->
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.label "Valor Atual"%>
+            <%= f.text_field :valorAtual, class: "form-control", id: "txt_nome_orcamento", placeholder: "" %>
+          </div>
+        </div>
+        <!-- Valor Atual-->
+        
+       <!-- Valor Planejado -->
+		    <div class="col-md-4">
+          <div class="form-group">
+
+            <%= f.label "Custo *"%>
+
+            <%= f.text_field :valorPlanejado, class: "form-control", id: "txt_nome_orcamento", placeholder: "" %>
+
+
+          </div>
+        </div>
+        <!-- Valor Planejado-->
+
+
+        <!-- Data Término -->
+        <div class="col-md-6">
+          <div class="form-group">
+
+            <%= f.label "Última Atualização *" %>
+
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <%= f.text_field :updated_at, class: "form-control pull-right", id: "txt_nome_orcamento", placeholder: "" %>
+            </div>
+
+          </div>
+        </div>
+        <!-- Data Término -->
+
+        <div class="form-group">
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+
+        <div class="form-group has-error">
+          <label class="control-label" for="inputError">
+            * Campos Obrigatórios
+          </label>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
