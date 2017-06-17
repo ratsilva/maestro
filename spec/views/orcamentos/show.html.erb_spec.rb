@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+=begin
 RSpec.describe "orcamentos/show", type: :view do
   before(:each) do
     @orcamento = assign(:orcamento, Orcamento.create!(
@@ -19,4 +19,5 @@ RSpec.describe "orcamentos/show", type: :view do
     expect(rendered).to match(/4/)
     expect(rendered).to match(/5/)
   end
+=end
 end
