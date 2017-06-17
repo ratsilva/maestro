@@ -1,6 +1,6 @@
 require 'rails_helper'
-=begin
 RSpec.describe "orcamentos/show", type: :view do
+=begin
   before(:each) do
     @orcamento = assign(:orcamento, Orcamento.create!(
       :name => "Name",
