@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
+    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     
     
@@ -13,11 +15,14 @@
 	  <%= stylesheet_link_tag 'https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css' %>
 	  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css' %>
     
+    
     <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
 
   </head>
 
   <body class="hold-transition skin-blue sidebar-mini">
+    
+    
     <div class="wrapper">
       <%= render partial: 'home/topnavigation' %>
 	    <%= render partial: 'home/menunavigation' %>

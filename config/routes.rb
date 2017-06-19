@@ -18,5 +18,10 @@ Rails.application.routes.draw do
   post '/employees/delete_knowledge'
 
   get 'dashboard' => 'dashboard#index'
+  get '/chat' => 'users#index'
+
+  resources :conversations do
+    resources :messages
+  end
 
 end
