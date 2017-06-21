@@ -56,11 +56,11 @@
           </li>
 
           <!-- Orçamentos -->
-          <li class="treeview">
-            <a href="/">
-              <i class="fa fa-shopping-cart"></i> <span>Orçamentos</span>
-            </a>
+          <li class="<%= active_class('orcamentos') %> treeview">
+            <%= link_to '<i class="fa fa-shopping-cart"></i><span>Orcamentos</span>'.html_safe, orcamentos_path %>
+              
           </li>
+
 
           <!-- Propostas Técnicas -->
           <li class="treeview">
@@ -98,6 +98,24 @@
               <li><a href="/"><i class="fa fa-circle-o"></i> Acessos</a></li>
             </ul>
           </li>
+          
+          
+          <!-- Chat -->
+            <li class="treeview">
+          
+        <% @users.each_with_index do |user, index| %>
+          <tr>
+            <td><%= index +=1 %></td>
+            <td><%= user.name %></td>
+            <td>
+            <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+                        "data-sid" => current_user.id, "data-rip" => user.id %>
+            </td>
+         </tr>
+       <% end %>
+<!-- Chat -->  
+          </li>
+          
         </ul>
       </section>
       <!-- /.sidebar -->

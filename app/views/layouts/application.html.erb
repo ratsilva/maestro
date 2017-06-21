@@ -2,45 +2,27 @@
 <html lang="pt">
   <head>
     <title>Maestro</title>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!--
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
+    <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
+    
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    
+	  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css' %>
+	  <%= stylesheet_link_tag 'https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css' %>
+	  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css' %>
+    
+    
     <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
-
-
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-
-    <%= stylesheet_link_tag "bootstrap.min.css" %>
-    <%= stylesheet_link_tag "AdminLTE.min.css" %>
-    <%= stylesheet_link_tag "_all-skins.min.css" %>
-    <%= stylesheet_link_tag "blue.css" %>
-    <%= stylesheet_link_tag "jquery-jvectormap-1.2.2.css" %>
-    <%= stylesheet_link_tag "datepicker3.css" %>
-    <%= stylesheet_link_tag "daterangepicker.css" %>
-    <%= stylesheet_link_tag "bootstrap3-wysihtml5.min.css" %>
-	
-	<!--
-	<link rel="stylesheet" href="assets/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/AdminLTE.min.css">
-	<link rel="stylesheet" href="assets/_all-skins.min.css">
-	<link rel="stylesheet" href="assets/blue.css">
-	<link rel="stylesheet" href="assets/morris.css">
-	<link rel="stylesheet" href="assets/jquery-jvectormap-1.2.2.css">
-	<link rel="stylesheet" href="assets/datepicker3.css">
-	<link rel="stylesheet" href="assets/daterangepicker.css">
-	<link rel="stylesheet" href="assets/bootstrap3-wysihtml5.min.css"> -->
 
   </head>
 
   <body class="hold-transition skin-blue sidebar-mini">
+    
+    
     <div class="wrapper">
       <%= render partial: 'home/topnavigation' %>
 	    <%= render partial: 'home/menunavigation' %>
@@ -53,29 +35,18 @@
       <%= render partial: 'home/controlsidebar' %>
     </div>
     <!-- ./wrapper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
 		<script>
 			$.widget.bridge('uibutton', $.ui.button);
 		</script>
 		
 		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+		
 		<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-    
-    <%= javascript_include_tag "jquery-2.2.3.min.js" %>
-    <%= javascript_include_tag "bootstrap.min.js" %>
-    <%= javascript_include_tag "jquery.sparkline.min.js" %>
-    <%= javascript_include_tag "jquery-jvectormap-1.2.2.min.js" %>
-    <%= javascript_include_tag "jquery-jvectormap-world-mill-en.js" %>
-    <%= javascript_include_tag "jquery.knob.js" %>
-    <%= javascript_include_tag "daterangepicker.js" %>
-    <%= javascript_include_tag "bootstrap-datepicker.js" %>
-    <%= javascript_include_tag "bootstrap3-wysihtml5.all.min.js" %>
-    <%= javascript_include_tag "jquery.slimscroll.min.js" %>
-    <%= javascript_include_tag "fastclick.js" %>
-    <%= javascript_include_tag "app.min.js" %>
-    <%= javascript_include_tag "dashboard.js" %>
-    <%= javascript_include_tag "demo.js" %>
     
 
     <script>

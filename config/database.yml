@@ -22,6 +22,6 @@ development:
  host: localhost
  username: maestro
  password: maestro
- database: maestroDB
+ database: maestrodb
 cucumber:
   <<: *test

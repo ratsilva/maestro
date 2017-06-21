@@ -70,3 +70,6 @@ end
 
 gem 'devise'
 gem 'chartkick'
+
+gem 'private_pub'
+gem 'thin'

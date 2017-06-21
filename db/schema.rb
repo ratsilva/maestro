@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616195953) do
+ActiveRecord::Schema.define(version: 20170619034555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,15 +34,13 @@ ActiveRecord::Schema.define(version: 20170616195953) do
     t.string   "status"
   end
 
-  create_table "deliveries", force: :cascade do |t|
-    t.string   "software"
-    t.string   "versao"
-    t.string   "entregavel"
-    t.binary   "anexo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "project_id"
-    t.index ["project_id"], name: "index_deliveries_on_project_id", using: :btree
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
+    t.index ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
   end
 
   create_table "employees", force: :cascade do |t|
@@ -78,6 +76,7 @@ ActiveRecord::Schema.define(version: 20170616195953) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   create_table "notifications", force: :cascade do |t|
     t.integer  "id_usuario_origem"
     t.integer  "id_usuario_destino"
@@ -88,6 +87,28 @@ ActiveRecord::Schema.define(version: 20170616195953) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "destino"
+=======
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+  end
+
+  create_table "orcamentos", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "valorAtual"
+    t.integer  "valorPlanejado"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "client_id"
+    t.integer  "project_id"
+    t.index ["client_id"], name: "index_orcamentos_on_client_id", using: :btree
+    t.index ["project_id"], name: "index_orcamentos_on_project_id", using: :btree
+>>>>>>> master
   end
 
   create_table "projects", force: :cascade do |t|
@@ -127,6 +148,7 @@ ActiveRecord::Schema.define(version: 20170616195953) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "deliveries", "projects"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "projects", "clients"
 end
