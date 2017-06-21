@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_variables
   layout :layout_by_resource
+
+  def set_variables
+      @notifications = Notification.search_nao_lidas(current_user.id)
+  end
 
   protected
 
@@ -11,6 +16,7 @@ class ApplicationController < ActionController::Base
   private
 
   def layout_by_resource
+    
     if devise_controller?
       "homepage"
     else
