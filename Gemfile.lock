@@ -107,6 +107,8 @@ GEM
     ffi (1.9.18-x86-mingw32)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    gruff (0.7.0)
+      rmagick (~> 2.13, >= 2.13.4)
     http_parser.rb (0.6.0)
     i18n (0.8.1)
     jbuilder (2.6.4)
@@ -137,8 +139,18 @@ GEM
     nokogiri (1.7.2-x86-mingw32)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
+    pdf-core (0.7.0)
     pg (0.20.0)
     pg (0.20.0-x86-mingw32)
+    prawn (2.2.2)
+      pdf-core (~> 0.7.0)
+      ttfunk (~> 1.5)
+    prawn-rails (1.0.0)
+      prawn
+      prawn-table
+      rails (>= 3.1.0)
+    prawn-table (0.2.2)
+      prawn (>= 1.3.0, < 3.0.0)
     private_pub (1.0.3)
       faye
     public_suffix (2.0.5)
@@ -176,6 +188,7 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    rmagick (2.16.0)
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
     rspec-expectations (3.6.0)
@@ -224,6 +237,7 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.7)
+    ttfunk (1.5.1)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
@@ -259,10 +273,12 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
+  gruff
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
   pg
+  prawn-rails
   private_pub
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)

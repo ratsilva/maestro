@@ -73,3 +73,8 @@ gem 'chartkick'
 
 gem 'private_pub'
 gem 'thin'
+
+# Gem para gerar os pdfs
+gem 'prawn-rails'
+# Gem para gerar os gráficos
+gem 'gruff'
